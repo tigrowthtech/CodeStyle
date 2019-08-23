@@ -62,6 +62,13 @@ module.exports = {
         "no-multiple-empty-lines": [1, { max: 1 }],
         "class-methods-use-this": "off",
         "no-param-reassign": "off",
+        "comma-dangle": [
+            "error",
+            {
+                arrays: "never",
+                objects: "always",
+            },
+        ],
         "no-unused-vars": [
             "error",
             {
