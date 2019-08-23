@@ -1,8 +1,9 @@
-#Manual Técnico de Code Style
+# Manual Técnico de Code Style
 
-##VSCode - Extensões recomendadas
+## VSCode - Extensões recomendadas
 
-###ESLint + Prettier
+### ESLint + Prettier
+
 Única extensão da lista **obrigatória** para garantir que teremos o código padronizado.
 
 Juntas garantem que todos teremos os códigos usando as guidelines definidas.
@@ -71,16 +72,20 @@ module.exports = {
 };
 ```
 
-###GitLens
+### GitLens
+
 Integrada com o Git (não github) mostra informações úteis dentro do git dentro do projeto. Entre as funcionalidades, a principal é que ela ajuda a resolver conflitos de maneira visual e simples.
 
-###Rocketseat React Native + Rocketseat ReactJS
+### Rocketseat React Native + Rocketseat ReactJS
+
 Juntas, elas disponibilizam vários atalhos para programar em React Native e React JS respectivamente. Facilita muito a vida tê-las instaladas.
 
-###Color Highlight
+### Color Highlight
+
 Ajuda a visualizar as cores dentro do VSCode. Ele identifica onde tem um hexadecimal, rgb, nome de cor, etc e mostra a cor ao lado.
 
-###Settings Sync
+### Settings Sync
+
 Ao conectar ao github, com ela você consegue sincronizar suas configurações do VSCode direto num _gist_ do github. Bastante útil quando se tem muitas extensões e não quer o risco de perder suas configurações.
 
 ### Husky = Correcões automáticas antes de dar o gitcommit
@@ -105,12 +110,13 @@ Depois disso, adicione os hooks, também no _package.json_
 }
 ```
 
-##GIT
+## GIT
+
 Nunca esquecer de configurar o .gitignore adequadamente. Na pasta gitignores tem arquivos base para o gitignore de node, reactjs e reactnative.
 
 Evitar commits com descrições poucos explicativas.
 
-###Política de Branches
+### Política de Branches
 
 Sempre trabalharemos com pelo menos 3 branches:
 
@@ -119,5 +125,6 @@ Sempre trabalharemos com pelo menos 3 branches:
 -   Dev: tudo que está em desenvolvimento, está pronto, mas ainda não foi para produção. Branch que irá para o servidor de testes adequado.
 -   Feature: cada feature precisa ter sua branch. Uma vez pronta (e testada!) é feito um pull request para a branch _dev_.
 
-##TESTES
+## TESTES
+
 Teremos que ter, ainda será pensado e adicionado aqui.
