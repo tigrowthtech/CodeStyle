@@ -1,0 +1,20 @@
+{
+    "name": "guidelines",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "eslint": "^6.2.1",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-config-prettier": "^6.1.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-prettier": "^3.1.0",
+        "husky": "^4.0.0-beta.1"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "eslint --fix */*.js"
+        }
+    }
+}
