@@ -9,7 +9,6 @@ export default class User {
     const obj = {
       a: 'a',
       b: 'b',
-      c: 'c',
     };
 
     this.arr = arr;
