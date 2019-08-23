@@ -7,8 +7,6 @@ export default class User {
   }
 
   sayMyName() {
-    console.log('Name:');
-
     console.log(`My name is: ${this.name}`);
   }
 
