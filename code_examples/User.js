@@ -4,4 +4,8 @@ export default class User {
     this.age = age;
     this.cpf = cpf;
   }
+
+  canDrink() {
+    return this.age >= 18;
+  }
 }
