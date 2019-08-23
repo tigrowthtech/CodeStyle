@@ -4,6 +4,16 @@ export default class User {
     this.name = name;
     this.age = age;
     this.cpf = cpf;
+
+    const arr = [1, 2, 3];
+    const obj = {
+      a: 'a',
+      b: 'b',
+      c: 'c',
+    };
+
+    this.arr = arr;
+    this.obj = obj;
   }
 
   sayMyName() {
