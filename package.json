@@ -14,7 +14,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "eslint --fix */*.js"
+            "pre-commit": "echo 'rodando'; eslint --fix */*.js"
         }
     }
 }
