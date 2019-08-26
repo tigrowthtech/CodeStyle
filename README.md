@@ -30,6 +30,8 @@ Após instalar as duas extensões no VSCode, adicionar isso nas configurações 
 ],
 ```
 
+#### NodeJS
+
 Em cada projeto, adicionar essas dependências no **devDependencies** do _package.json_ e rodar o _npm install_ ou _yarn_ em seguida
 
 ```json
@@ -40,7 +42,7 @@ Em cada projeto, adicionar essas dependências no **devDependencies** do _packag
 "eslint-plugin-prettier": "^3.1.0",
 ```
 
-Dentro de cada projeto, adicionar o arquivo .eslintrc.js com o seguinte conteúdo:
+Dentro de cada projeto **NodeJS**, adicionar o arquivo .eslintrc.js com o seguinte conteúdo:
 
 ```javascript
 module.exports = {
@@ -75,6 +77,67 @@ module.exports = {
                 argsIgnorePattern: "next",
             },
         ],
+    },
+};
+```
+
+#### ReactJS
+
+Em cada projeto, adicionar essas dependências no **devDependencies** do _package.json_ e rodar o _npm install_ ou _yarn_ em seguida
+
+```json
+"eslint": "^6.2.2",
+"eslint-config-airbnb": "^18.0.1",
+"eslint-config-prettier": "^6.1.0",
+"eslint-plugin-import": "^2.18.2",
+"eslint-plugin-jsx-a11y": "^6.2.3",
+"eslint-plugin-prettier": "^3.1.0",
+"eslint-plugin-react": "^7.14.3",
+"eslint-plugin-react-hooks": "^1.7.0",
+"prettier": "^1.18.2"
+```
+
+Dentro de cada projeto **ReactJS**, adicionar o arquivo .eslintrc.js com o seguinte conteúdo:
+
+```javascript
+module.exports = {
+    env: {
+        browser: true,
+        es6: true,
+    },
+    extends: ["airbnb", "prettier", "prettier/react"],
+    globals: {
+        Atomics: "readonly",
+        SharedArrayBuffer: "readonly",
+    },
+    parser: "babel-eslint",
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+        },
+        ecmaVersion: 2018,
+        sourceType: "module",
+    },
+    plugins: ["react"],
+    rules: {
+        quotes: [2, "single"],
+        indent: ["error", 2],
+        "no-multiple-empty-lines": [1, { max: 1 }],
+        "prettier/prettier": "error",
+        "comma-dangle": [
+            "error",
+            {
+                arrays: "never",
+                objects: "always",
+            },
+        ],
+        "react/jsx-filename-extension": [
+            "warn",
+            {
+                extensions: ["js", "jsx"],
+            },
+        ],
+        "import/prefer-default-export": "off",
     },
 };
 ```
