@@ -1,34 +1,33 @@
 module.exports = {
   env: {
-    es6: true,
-    node: true,
+    browser: true,
+    es6: true
   },
-  extends: ['airbnb-base'],
+  extends: ["airbnb", "prettier", "prettier/react"],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly"
   },
+  parser: "babel-eslint",
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
+    ecmaFeatures: { jsx: true },
+    ecmaVersion: 2020,
+    sourceType: "module"
   },
+  plugins: ["react", "prettier"],
   rules: {
-    indent: ['error', 2],
-    'no-multiple-empty-lines': [1, { max: 1 }],
-    'class-methods-use-this': 'off',
-    'no-param-reassign': 'off',
-    'comma-dangle': [
-      'error',
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "no-multiple-empty-lines": ["warn", { max: 1 }],
+    "react/jsx-filename-extension": ["warn", { extensions: ["js", "jsx"] }],
+    "import/prefer-default-export": "off",
+    "prettier/prettier": ["error",
       {
-        arrays: 'never',
-        objects: 'always',
-      },
+        singleQuote: true,
+        printWidth: 120,
+        trailingComma: "es5",
+        jsxBracketSameLine: true
+      }
     ],
-    'no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: 'next',
-      },
-    ],
-  },
+  }
 };

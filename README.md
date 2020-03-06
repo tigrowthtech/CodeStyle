@@ -1,145 +1,142 @@
 # Manual Técnico de Code Style
 
-## VSCode - Extensões recomendadas
+> ESLint, Prettier e Git são obrigatórios em todos os projetos
 
-### ESLint + Prettier
+**ESLint**: Serve para alertar sobre código danoso e passível de gerar bugs.
 
-Única extensão da lista **obrigatória** para garantir que teremos o código padronizado.
+**Prettier**: Serve para manter uma formatação padrão de código.
 
-Juntas garantem que todos teremos os códigos usando as guidelines definidas.
+**Git**: Serve para gerenciar as versões do código
 
-ESLint: Serve para garantir que todos os desenvolvedores do projeto usarão o _mesmo padrão de código_.
+## Projetos com NodeJS
 
-Prettier: Automatiza a correção das regras do ESLint de maneira automática quando salvar o arquivo.
+Em cada projeto executar a instalação dos seguintes pacotes com **npm** ou **yarn**:
 
-Após instalar as duas extensões no VSCode, adicionar isso nas configurações de usuários do VSCode para garantir que estarão funcionando:
+##### NPM
 
-```json
-// parte dos lints
-"editor.formatOnSave": true,
-"prettier.printWidth": 160,
-"prettier.tabWidth": 4,
-"prettier.trailingComma": "all",
-"prettier.jsxBracketSameLine": true,
-"prettier.eslintIntegration": true,
-
-// mostrará duas marcacoes verticais no editor. O ideal é que o código nunca passe da primeira (80 colunas), mas ele não deve passar mesmo nunca da segunda.
-"editor.rulers": [
-    80,
-    120,
-],
+```
+npm install -D prettier eslint eslint-config-airbnb-base eslint-config-prettier eslint-plugin-prettier eslint-plugin-import
 ```
 
-#### NodeJS
+##### YARN
 
-Em cada projeto, adicionar essas dependências no **devDependencies** do _package.json_ e rodar o _npm install_ ou _yarn_ em seguida
-
-```json
-"eslint": "^6.2.1",
-"eslint-config-airbnb-base": "^14.0.0",
-"eslint-config-prettier": "^6.1.0",
-"eslint-plugin-import": "^2.18.2",
-"eslint-plugin-prettier": "^3.1.0",
+```
+yarn add -D prettier eslint eslint-config-airbnb-base eslint-config-prettier eslint-plugin-prettier eslint-plugin-import
 ```
 
 Dentro de cada projeto **NodeJS**, adicionar o arquivo .eslintrc.js com o seguinte conteúdo:
 
 ```javascript
 module.exports = {
-    env: {
-        es6: true,
-        node: true,
-    },
-    extends: ["airbnb-base"],
-    globals: {
-        Atomics: "readonly",
-        SharedArrayBuffer: "readonly",
-    },
-    parserOptions: {
-        ecmaVersion: 2018,
-        sourceType: "module",
-    },
-    rules: {
-        indent: ["error", 2],
-        "no-multiple-empty-lines": [1, { max: 1 }],
-        "class-methods-use-this": "off",
-        "no-param-reassign": "off",
-        "comma-dangle": [
-            "error",
-            {
-                arrays: "never",
-                objects: "always",
-            },
-        ],
-        "no-unused-vars": [
-            "error",
-            {
-                argsIgnorePattern: "next",
-            },
-        ],
-    },
+  env: {
+    es6: true,
+    node: true,
+  },
+  extends: ["airbnb-base", "prettier"],
+  globals: {
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
+  },
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
+  },
+  plugins: ["prettier"],
+  rules: {
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "no-multiple-empty-lines": ["warn", { max: 1 }],
+    "no-unused-vars": ["error", { argsIgnorePattern: "next" }],
+    "import/prefer-default-export": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        singleQuote: true,
+        printWidth: 120,
+        trailingComma: "es5"
+      }
+    ],
+  },
 };
 ```
 
-#### ReactJS
+## Projetos com ReactJS
 
-Em cada projeto, adicionar essas dependências no **devDependencies** do _package.json_ e rodar o _npm install_ ou _yarn_ em seguida
+Em cada projeto executar a instalação dos seguintes pacotes com **npm** ou **yarn**:
 
-```json
-"eslint": "^6.2.2",
-"eslint-config-airbnb": "^18.0.1",
-"eslint-config-prettier": "^6.1.0",
-"eslint-plugin-import": "^2.18.2",
-"eslint-plugin-jsx-a11y": "^6.2.3",
-"eslint-plugin-prettier": "^3.1.0",
-"eslint-plugin-react": "^7.14.3",
-"eslint-plugin-react-hooks": "^1.7.0",
-"prettier": "^1.18.2"
+##### NPM
+
 ```
+npm install -D prettier eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-prettier eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y
+```
+
+##### YARN
+
+```
+yarn add -D prettier eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-prettier eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y
+```
+
 
 Dentro de cada projeto **ReactJS**, adicionar o arquivo .eslintrc.js com o seguinte conteúdo:
 
 ```javascript
 module.exports = {
-    env: {
-        browser: true,
-        es6: true,
-    },
-    extends: ["airbnb", "prettier", "prettier/react"],
-    globals: {
-        Atomics: "readonly",
-        SharedArrayBuffer: "readonly",
-    },
-    parser: "babel-eslint",
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
-        ecmaVersion: 2018,
-        sourceType: "module",
-    },
-    plugins: ["react"],
-    rules: {
-        quotes: [2, "single"],
-        indent: ["error", 2],
-        "no-multiple-empty-lines": [1, { max: 1 }],
-        "prettier/prettier": "error",
-        "comma-dangle": [
-            "error",
-            {
-                arrays: "never",
-                objects: "always",
-            },
-        ],
-        "react/jsx-filename-extension": [
-            "warn",
-            {
-                extensions: ["js", "jsx"],
-            },
-        ],
-        "import/prefer-default-export": "off",
-    },
+  env: {
+    browser: true,
+    es6: true
+  },
+  extends: ["airbnb", "prettier", "prettier/react"],
+  globals: {
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly"
+  },
+  parser: "babel-eslint",
+  parserOptions: {
+    ecmaFeatures: { jsx: true },
+    ecmaVersion: 2020,
+    sourceType: "module"
+  },
+  plugins: ["react", "prettier"],
+  rules: {
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "no-multiple-empty-lines": ["warn", { max: 1 }],
+    "react/jsx-filename-extension": ["warn", { extensions: ["js", "jsx"] }],
+    "import/prefer-default-export": "off",
+    "prettier/prettier": ["error",
+      {
+        singleQuote: true,
+        printWidth: 120,
+        trailingComma: "es5",
+        jsxBracketSameLine: true
+      }
+    ],
+  }
 };
+```
+
+## VSCode - Extensões recomendadas
+
+### ESLint
+
+> Única extensão da lista **obrigatória** para garantir que teremos o código padronizado.
+
+Após instalar a extensão no VSCode, adicionar isso nas configurações de usuários do VSCode para garantir que estará funcionando:
+
+```json
+// Configura a extensão do ESLint para formatar ao salvar
+"eslint.format.enable": true,
+"editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+},
+
+// Mostra duas réguas verticais no editor
+// Uma linha de código nunca deve ter mais de 120 colunas
+// E de preferência deve ter menos de 80 também
+"editor.rulers": [
+    80,
+    120,
+],
 ```
 
 ### GitLens
@@ -191,7 +188,7 @@ Evitar commits com descrições poucos explicativas.
 Sempre trabalharemos com pelo menos 3 branches:
 
 -   Master: somente coisas prontas para ir para produção.
--   Homologação: branch de branch para o cliente.
+-   Homologação: branch de testes para o cliente.
 -   Dev: tudo que está em desenvolvimento, está pronto, mas ainda não foi para produção. Branch que irá para o servidor de testes adequado.
 -   Feature: cada feature precisa ter sua branch. Uma vez pronta (e testada!) é feito um pull request para a branch _dev_.
 
